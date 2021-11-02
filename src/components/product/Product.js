@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import sanityClient from '../../client.js';
 import imageUrlBuilder from '@sanity/image-url';
@@ -26,18 +26,16 @@ const Product = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    console.log(productData);
-  }, [productData]);
-
   return (
     <div className='Product'>
       {productData &&
         productData.map((product, index) => (
-          <div key={index}>
-            <h1>{product.title}</h1>
-            <img src={urlFor(product.frontImage)} alt='image' />
-          </div>
+          <Link>
+            <div key={index}>
+              <h1>{product.title}</h1>
+              <img src={urlFor(product.frontImage)} alt='image' width='200px' />
+            </div>
+          </Link>
         ))}
     </div>
   );
