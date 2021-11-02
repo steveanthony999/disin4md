@@ -1,0 +1,29 @@
+.Navbar {
+  width: 100vw;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.Navbar .Navbar-inner-container {
+  width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar .Navbar-inner-container h1 {
+  color: white;
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 3rem;
+}
+
+.Navbar .Navbar-inner-container .Navbar-links a {
+  color: white;
+  margin-left: 1rem;
+}
