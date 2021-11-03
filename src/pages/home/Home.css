@@ -39,3 +39,11 @@
 .Home .Home-image .Home-frost a:hover {
   transform: scale(1.05);
 }
+
+.Home .Home-down-arrow {
+  width: 4rem;
+  transform: rotate(35deg);
+  position: absolute;
+  left: 50%;
+  bottom: -8rem;
+}
