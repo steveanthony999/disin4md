@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <div className='Home'>
       <div className='Home-image'>
+        <div className='Home-vertical-line'></div>
         <div className='Home-frost'>
           <Link to='/'>NEW ARRIVALS</Link>
           <Link to='/'>LOOKBOOK</Link>

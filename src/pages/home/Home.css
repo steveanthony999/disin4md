@@ -1,23 +1,25 @@
 .Home .Home-image {
   width: 100vw;
   height: 100vh;
-  background: url('../../assets/landing-3.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.Home .Home-image .Home-vertical-line {
+  width: 2px;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  position: absolute;
+  left: 400px;
+}
+
 .Home .Home-image .Home-frost {
   width: 900px;
   height: 700px;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 0, 0, 0.4),
-    rgba(55, 100, 200, 0.7)
-  );
-  backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.25rem);
   border-radius: 2rem;
-  box-shadow: 0 0 6rem rgba(0, 0, 0, 1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,11 +27,15 @@
 }
 
 .Home .Home-image .Home-frost a {
-  color: white;
-  font-size: 3rem;
+  color: black;
+  font-size: 1rem;
   font-weight: 600;
   margin: 2rem 4rem;
   letter-spacing: 2rem;
   line-height: 8rem;
-  text-decoration: overline;
+  transition: all 0.1s;
+}
+
+.Home .Home-image .Home-frost a:hover {
+  transform: scale(1.05);
 }

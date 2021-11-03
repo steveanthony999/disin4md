@@ -7,9 +7,13 @@ const Navbar = () => {
       <div className='Navbar-inner-container'>
         <h1>DISIN4MD</h1>
         <div className='Navbar-links'>
-          <Link to='/'>HOME</Link>
+          <a
+            href='https://discord.gg/CyQUnFZJ'
+            target='_blank'
+            rel='noreferrer'>
+            COMMUNITY
+          </a>
           <Link to='/'>SHOP</Link>
-          <Link to='/'>CONTACT</Link>
           <Link to='/'>CART</Link>
         </div>
       </div>

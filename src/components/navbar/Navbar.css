@@ -18,12 +18,19 @@
 }
 
 .Navbar .Navbar-inner-container h1 {
-  color: white;
+  color: black;
   font-family: 'Covered By Your Grace', cursive;
   font-size: 3rem;
 }
 
 .Navbar .Navbar-inner-container .Navbar-links a {
-  color: white;
+  color: black;
   margin-left: 1rem;
+  display: inline-block;
+  transition: all 0.1s;
+}
+
+.Navbar .Navbar-inner-container .Navbar-links a:hover {
+  transform: scale(1.05);
+  /* color: black; */
 }
