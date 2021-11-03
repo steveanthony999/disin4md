@@ -1,6 +1,5 @@
 .Home .Home-image {
   width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,9 +7,10 @@
 
 .Home .Home-image .Home-vertical-line {
   width: 2px;
-  height: 100vh;
+  height: 200vh;
   border: 1px solid rgba(0, 0, 0, 0.15);
   position: absolute;
+  top: 0;
   left: 400px;
 }
 
@@ -28,10 +28,10 @@
 
 .Home .Home-image .Home-frost a {
   color: black;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   margin: 2rem 4rem;
-  letter-spacing: 2rem;
+  letter-spacing: 1.7rem;
   line-height: 8rem;
   transition: all 0.1s;
 }

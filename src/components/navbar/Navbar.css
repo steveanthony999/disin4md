@@ -1,12 +1,12 @@
 .Navbar {
   width: 100vw;
-  padding: 2rem 0;
+  padding: 2.8rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  left: 0;
+  left: 0; */
   z-index: 10;
 }
 
@@ -32,5 +32,4 @@
 
 .Navbar .Navbar-inner-container .Navbar-links a:hover {
   transform: scale(1.05);
-  /* color: black; */
 }
