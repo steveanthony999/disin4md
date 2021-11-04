@@ -4,9 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position: fixed;
-  top: 0;
-  left: 0; */
   z-index: 10;
 }
 
@@ -23,13 +20,29 @@
   font-size: 3rem;
 }
 
+.Navbar .Navbar-inner-container .Navbar-links {
+  display: flex;
+  align-items: center;
+}
+
 .Navbar .Navbar-inner-container .Navbar-links a {
   color: black;
-  margin-left: 1rem;
+  margin-left: 1.4rem;
   display: inline-block;
   transition: all 0.1s;
 }
 
 .Navbar .Navbar-inner-container .Navbar-links a:hover {
   transform: scale(1.05);
+}
+
+.Navbar .Navbar-inner-container .Navbar-links .Navbar-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Navbar .Navbar-inner-container .Navbar-links .Navbar-cart img {
+  width: 1.5rem;
+  margin-left: 1rem;
 }

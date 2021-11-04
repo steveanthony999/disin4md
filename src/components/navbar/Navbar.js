@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+
+import Cart from '../../assets/cart-1.svg';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -14,7 +16,12 @@ const Navbar = () => {
             COMMUNITY
           </a>
           <Link to='/'>SHOP</Link>
-          <Link to='/'>CART</Link>
+          <Link to='/'>
+            <div className='Navbar-cart'>
+              CART
+              <img src={Cart} alt='cart' />
+            </div>
+          </Link>
         </div>
       </div>
     </nav>
