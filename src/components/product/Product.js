@@ -20,6 +20,7 @@ const Product = () => {
         `*[_type == "product"]{
         title,
         frontImage,
+        price
     }`
       )
       .then((data) => setProduct(data))
@@ -33,7 +34,8 @@ const Product = () => {
           <Link>
             <div key={index}>
               <h1>{product.title}</h1>
-              <img src={urlFor(product.frontImage)} alt='image' width='200px' />
+              <img src={urlFor(product.frontImage)} alt='' width='200px' />
+              <p>{product.price}</p>
             </div>
           </Link>
         ))}
