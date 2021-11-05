@@ -20,7 +20,8 @@ const Product = () => {
         `*[_type == "product"]{
         title,
         frontImage,
-        price
+        price,
+        status,
     }`
       )
       .then((data) => setProduct(data))
@@ -31,13 +32,14 @@ const Product = () => {
     <div className='Product'>
       {productData &&
         productData.map((product, index) => (
-          <Link>
-            <div key={index}>
+          <div key={index}>
+            <Link to='/'>
               <h1>{product.title}</h1>
               <img src={urlFor(product.frontImage)} alt='' width='200px' />
               <p>{product.price}</p>
-            </div>
-          </Link>
+              <p>{product.status}</p>
+            </Link>
+          </div>
         ))}
     </div>
   );

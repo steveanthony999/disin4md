@@ -31,6 +31,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+    },
+    {
       title: 'Default variant',
       name: 'defaultProductVariant',
       type: 'productVariant',
