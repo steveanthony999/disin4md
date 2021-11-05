@@ -1,0 +1,17 @@
+.Product .Product-card {
+  width: 300px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+.Product .Product-card .Product-card-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Product .Product-card .Product-card-body h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
