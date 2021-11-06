@@ -32,27 +32,25 @@ const Product = () => {
     <div className='Product'>
       {productData &&
         productData.map((product, index) => (
-          <div key={index} className='Product-card'>
-            <Link to='/'>
-              <div className='Product-card-header'>
-                <img src={urlFor(product.frontImage)} alt='' width='200px' />
-              </div>
-              <div className='Product-card-body'>
-                <h1>{product.title}</h1>
-              </div>
-              <div className='Product-card-footer'>
-                <p>${product.price}</p>
-                <p
-                  style={
-                    product.status === 'Sold Out'
-                      ? { color: 'red' }
-                      : { color: 'green' }
-                  }>
-                  {product.status}
-                </p>
-              </div>
-            </Link>
-          </div>
+          <Link to='/' key={index} className='Product-card'>
+            <div className='Product-card-header'>
+              <img src={urlFor(product.frontImage)} alt='' width='200px' />
+            </div>
+            <div className='Product-card-body'>
+              <h1>{product.title}</h1>
+            </div>
+            <div className='Product-card-footer'>
+              <p>${product.price}</p>
+              <p
+                style={
+                  product.status === 'Sold Out'
+                    ? { color: 'red' }
+                    : { color: 'green' }
+                }>
+                {product.status}
+              </p>
+            </div>
+          </Link>
         ))}
     </div>
   );

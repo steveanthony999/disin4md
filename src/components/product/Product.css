@@ -1,12 +1,18 @@
 .Product .Product-card {
   width: 300px;
+  padding-top: 3rem;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 .Product .Product-card .Product-card-body {
   width: 100%;
+  padding: 0 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
