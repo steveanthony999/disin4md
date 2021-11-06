@@ -1,36 +1,50 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { commerce } from '../../lib/commerce';
 
-import sanityClient from '../../client.js';
-import imageUrlBuilder from '@sanity/image-url';
+// import sanityClient from '../../client.js';
+// import imageUrlBuilder from '@sanity/image-url';
 
 import './Product.css';
 
 const Product = () => {
-  const [productData, setProduct] = useState(null);
-  const builder = imageUrlBuilder(sanityClient);
+  const [products, setProducts] = useState([]);
 
-  function urlFor(source) {
-    return builder.image(source);
-  }
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "product"]{
-        title,
-        frontImage,
-        price,
-        status,
-    }`
-      )
-      .then((data) => setProduct(data))
-      .catch((err) => console.log(err));
+    fetchProducts();
   }, []);
+
+  console.log(products);
+  // const [productData, setProduct] = useState(null);
+  // const builder = imageUrlBuilder(sanityClient);
+
+  // function urlFor(source) {
+  //   return builder.image(source);
+  // }
+
+  // useEffect(() => {
+  //   sanityClient
+  //     .fetch(
+  //       `*[_type == "product"]{
+  //       title,
+  //       frontImage,
+  //       price,
+  //       status,
+  //   }`
+  //     )
+  //     .then((data) => setProduct(data))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <div className='Product'>
-      {productData &&
+      {/* {productData &&
         productData.map((product, index) => (
           <Link to='/' key={index} className='Product-card'>
             <div className='Product-card-header'>
@@ -51,7 +65,7 @@ const Product = () => {
               </p>
             </div>
           </Link>
-        ))}
+        ))} */}
     </div>
   );
 };

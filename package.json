@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chec/commerce.js": "^2.8.0",
     "@sanity/client": "^2.21.7",
     "@sanity/image-url": "^1.0.1",
     "@testing-library/jest-dom": "^5.14.1",
