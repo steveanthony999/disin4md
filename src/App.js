@@ -14,7 +14,7 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route path='/products'>
+          <Route path='/:id'>
             <Product />
           </Route>
         </Switch>
