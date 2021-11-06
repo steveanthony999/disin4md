@@ -15,7 +15,6 @@ const Navbar = () => {
             rel='noreferrer'>
             COMMUNITY
           </a>
-          <Link to='/'>SHOP</Link>
           <Link to='/'>
             <div className='Navbar-cart'>
               CART
