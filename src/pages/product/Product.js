@@ -7,7 +7,6 @@ import './Product.css';
 
 const Product = () => {
   const [variant, setVariant] = useState([]);
-  const [size, setSize] = useState([{ name: '', label: '' }]);
   const location = useLocation();
 
   //   useEffect(() => {
@@ -48,6 +47,7 @@ const Product = () => {
               </option>
             ))}
           </select>
+          <button>ADD TO CART</button>
         </div>
       </div>
     </div>
