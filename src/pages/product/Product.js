@@ -5,8 +5,9 @@ import { commerce } from '../../lib/commerce';
 
 import './Product.css';
 
-const Product = () => {
+const Product = ({ onAddToCart }) => {
   const [variant, setVariant] = useState([]);
+  const [sizeId, setSizeId] = useState();
   const location = useLocation();
 
   //   useEffect(() => {
@@ -24,8 +25,12 @@ const Product = () => {
     const x = location.state.variant_groups[0].options;
     setVariant(x);
     // setSize((size) => [{ ...size, name: x.name, label: x.name }]);
-    console.log(variant);
+    // console.log(variant);
   }, [variant]);
+
+  const handleChange = (e) => {
+    setSizeId(e.target.value);
+  };
 
   return (
     <div className='Product'>
@@ -40,14 +45,16 @@ const Product = () => {
             dangerouslySetInnerHTML={{
               __html: location.state.description,
             }}></p>
-          <select name='' id=''>
+          <select name='sizes' onChange={handleChange}>
             {variant.map((x) => (
-              <option value={x.name} key={x.name}>
+              <option value={x.id} key={x.name}>
                 {x.name}
               </option>
             ))}
           </select>
-          <button>ADD TO CART</button>
+          <button onClick={() => onAddToCart(location.state.id, 1, sizeId)}>
+            ADD TO CART
+          </button>
         </div>
       </div>
     </div>

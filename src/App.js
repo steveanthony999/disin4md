@@ -15,6 +15,7 @@ function App() {
     const { data } = await commerce.products.list();
 
     setProducts(data);
+    console.log(products);
   };
 
   const fetchCart = async () => {
@@ -26,7 +27,13 @@ function App() {
     fetchCart();
   }, []);
 
-  // console.log(cart);
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+
+    setCart(item.cart);
+  };
+
+  console.log(cart);
   return (
     <Router>
       <div className='App'>
@@ -36,7 +43,7 @@ function App() {
             <Home products={products} />
           </Route>
           <Route path='/:id'>
-            <Product />
+            <Product onAddToCart={handleAddToCart} />
           </Route>
         </Switch>
       </div>
