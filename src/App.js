@@ -1,25 +1,31 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/navbar/Navbar';
-import Home from './pages/home/Home';
-import Product from './components/product/Product';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import Navbar from './components/navbar/Navbar';
+import Products from './components/products/Products';
+import { commerce } from './lib/commerce';
 
 import './App.css';
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  console.log(products);
+
   return (
-    <Router>
-      <div className='App'>
-        <Navbar />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/:id'>
-            <Product />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div className='App'>
+      {/* <Navbar /> */}
+      <Products products={products} />
+    </div>
   );
 }
 
