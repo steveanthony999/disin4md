@@ -7,15 +7,26 @@ import './Product.css';
 
 const Product = () => {
   const [variant, setVariant] = useState([]);
+  const [size, setSize] = useState([{ name: '', label: '' }]);
   const location = useLocation();
-  console.log(location.state);
+
+  //   useEffect(() => {
+  //     commerce.products
+  //       .getVariants(location.state.id)
+  //       .then((variants) => setVariant(variants.data))
+  //       .then(console.log(variant));
+  //   }, [location]);
 
   useEffect(() => {
-    commerce.products
-      .getVariants(location.state.id)
-      .then((variants) => setVariant(variants.data));
-    //   .then(console.log(variant));
-  }, []);
+    // location.state.variant_groups[0].options.map((x) =>
+    //   //   setSize({ ...x, value: x.name, label: x.name })
+    //   setSize([{ ...x, value: x.name, label: x.name }])
+    // );
+    const x = location.state.variant_groups[0].options;
+    setVariant(x);
+    // setSize((size) => [{ ...size, name: x.name, label: x.name }]);
+    console.log(variant);
+  }, [variant]);
 
   return (
     <div className='Product'>
@@ -30,6 +41,13 @@ const Product = () => {
             dangerouslySetInnerHTML={{
               __html: location.state.description,
             }}></p>
+          <select name='' id=''>
+            {variant.map((x) => (
+              <option value={x.name} key={x.name}>
+                {x.name}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </div>
