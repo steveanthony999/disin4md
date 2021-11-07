@@ -1,0 +1,10 @@
+.Product {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Product .Product-container {
+  display: flex;
+}
