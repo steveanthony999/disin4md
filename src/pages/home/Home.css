@@ -1,49 +1,6 @@
-.Home .Home-image {
+.Home {
   width: 100vw;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-}
-
-.Home .Home-image .Home-vertical-line {
-  width: 2px;
-  height: 200vh;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  position: absolute;
-  top: 0;
-  left: 400px;
-}
-
-.Home .Home-image .Home-frost {
-  width: 900px;
-  height: 700px;
-  backdrop-filter: blur(0.25rem);
-  border-radius: 2rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.Home .Home-image .Home-frost a {
-  color: black;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 2rem 4rem;
-  letter-spacing: 1.7rem;
-  line-height: 8rem;
-  transition: all 0.1s;
-}
-
-.Home .Home-image .Home-frost a:hover {
-  transform: scale(1.05);
-}
-
-.Home .Home-down-arrow {
-  width: 4rem;
-  transform: rotate(35deg);
-  position: absolute;
-  left: 50%;
-  bottom: -8rem;
 }
