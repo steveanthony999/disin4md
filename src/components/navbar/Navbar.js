@@ -15,7 +15,7 @@ const Navbar = ({ cart }) => {
             rel='noreferrer'>
             COMMUNITY
           </a>
-          <Link to='/'>
+          <Link to='/cart'>
             <div className='Navbar-cart'>
               CART
               <img src={Cart} alt='cart' />

@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 import './Product.css';
 
 const Product = ({ product }) => {
-  // console.log(product);
   return (
-    // <Link to={`/${product.id}`}>
     <Link
       to={{
         pathname: `/${product.id}`,

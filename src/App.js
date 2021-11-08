@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 
-import './App.css';
 import Home from './pages/home/Home';
 import Product from './pages/product/Product';
+import Cart from './pages/cart/Cart';
+
 import { commerce } from './lib/commerce';
+
+import './App.css';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -41,6 +44,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <Home products={products} />
+          </Route>
+          <Route exact path='/cart'>
+            <Cart cart={cart} />
           </Route>
           <Route path='/:id'>
             <Product onAddToCart={handleAddToCart} />
