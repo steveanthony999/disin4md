@@ -7,10 +7,16 @@ import './Product.css';
 const Product = ({ onAddToCart }) => {
   const [variant, setVariant] = useState([]);
   const [sizeId, setSizeId] = useState();
+  const [isCartButtonActive, setIsCartButtonActive] = useState(false);
   const location = useLocation();
 
   const handleChange = (e) => {
     setSizeId(e.target.value);
+    if (e.target.value === null) {
+      setIsCartButtonActive(false);
+    } else {
+      setIsCartButtonActive(true);
+    }
   };
 
   useEffect(() => {
@@ -18,10 +24,6 @@ const Product = ({ onAddToCart }) => {
       .getVariants(location.state.id)
       .then((x) => setVariant(x.data));
   }, []);
-
-  useEffect(() => {
-    console.log(variant);
-  }, [variant]);
 
   return (
     <div className='Product'>
@@ -37,14 +39,20 @@ const Product = ({ onAddToCart }) => {
               __html: location.state.description,
             }}></p>
           <select name='sizes' onChange={handleChange}>
-            <option value='null'>--Select Size</option>
+            {isCartButtonActive ? null : (
+              <option value={null} id='sizes'>
+                --Select Size
+              </option>
+            )}
             {variant.map((x) => (
-              <option value={x.id} key={x.id}>
+              <option value={x.id} key={x.id} id='sizes'>
                 {x.description}
               </option>
             ))}
           </select>
-          <button onClick={() => onAddToCart(location.state.id, 1, sizeId)}>
+          <button
+            onClick={() => onAddToCart(location.state.id, 1, sizeId)}
+            disabled={!isCartButtonActive}>
             ADD TO CART
           </button>
         </div>
