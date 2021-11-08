@@ -10,22 +10,8 @@ const Product = ({ onAddToCart }) => {
   const [sizeId, setSizeId] = useState();
   const location = useLocation();
 
-  //   useEffect(() => {
-  //     commerce.products
-  //       .getVariants(location.state.id)
-  //       .then((variants) => setVariant(variants.data))
-  //       .then(console.log(variant));
-  //   }, [location]);
-
   useEffect(() => {
-    // location.state.variant_groups[0].options.map((x) =>
-    //   //   setSize({ ...x, value: x.name, label: x.name })
-    //   setSize([{ ...x, value: x.name, label: x.name }])
-    // );
-    const x = location.state.variant_groups[0].options;
-    setVariant(x);
-    // setSize((size) => [{ ...size, name: x.name, label: x.name }]);
-    // console.log(variant);
+    setVariant(location.state.variant_groups[0].options);
   }, [variant]);
 
   const handleChange = (e) => {

@@ -37,7 +37,7 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Navbar />
+        <Navbar cart={cart.total_items} />
         <Switch>
           <Route exact path='/'>
             <Home products={products} />

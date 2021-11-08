@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cart from '../../assets/cart-1.svg';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
   return (
     <nav className='Navbar'>
       <div className='Navbar-inner-container'>
@@ -19,6 +19,7 @@ const Navbar = () => {
             <div className='Navbar-cart'>
               CART
               <img src={Cart} alt='cart' />
+              <p>{cart}</p>
             </div>
           </Link>
         </div>
