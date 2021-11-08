@@ -54,7 +54,7 @@ function App() {
     setCart(response.cart);
   };
 
-  console.log(cart);
+  // console.log(cart);
   return (
     <Router>
       <div className='App'>
@@ -72,7 +72,7 @@ function App() {
             />
           </Route>
           <Route path='/:id'>
-            <Product onAddToCart={handleAddToCart} item={products} />
+            <Product onAddToCart={handleAddToCart} />
           </Route>
         </Switch>
       </div>

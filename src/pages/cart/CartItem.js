@@ -3,6 +3,7 @@ const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
     <div className='CartItem'>
       <img src={item.media} alt={item.name} />
       <h2>{item.name}</h2>
+      <p>Size M</p>
       <h2>{item.line_total.formatted_with_symbol}</h2>
       <div className='CardItem-buttons'>
         <button onClick={() => onUpdateCartQty(item.id, item.quantity - 1)}>

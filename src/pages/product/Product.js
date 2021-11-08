@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { commerce } from '../../lib/commerce';
+import { commerce } from '../../lib/commerce';
 
 import './Product.css';
 
-const Product = ({ item, onAddToCart }) => {
+const Product = ({ onAddToCart }) => {
   const [variant, setVariant] = useState([]);
   const [sizeId, setSizeId] = useState();
   const location = useLocation();
-
-  useEffect(() => {
-    setVariant(location.state.variant_groups[0].options);
-  }, [variant]);
 
   const handleChange = (e) => {
     setSizeId(e.target.value);
   };
 
-  //   useEffect(() => {
-  //     commerce.products
-  //       .getVariants(location.state.id)
-  //       .then((variants) => console.log(variants.data));
-  //   }, []);
+  useEffect(() => {
+    commerce.products
+      .getVariants(location.state.id)
+      .then((x) => setVariant(x.data));
+  }, []);
+
+  useEffect(() => {
+    console.log(variant);
+  }, [variant]);
 
   return (
     <div className='Product'>
@@ -37,9 +37,10 @@ const Product = ({ item, onAddToCart }) => {
               __html: location.state.description,
             }}></p>
           <select name='sizes' onChange={handleChange}>
+            <option value='null'>--Select Size</option>
             {variant.map((x) => (
-              <option value={x.id} key={x.name}>
-                {x.name}
+              <option value={x.id} key={x.id}>
+                {x.description}
               </option>
             ))}
           </select>
