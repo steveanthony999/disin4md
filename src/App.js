@@ -64,7 +64,12 @@ function App() {
             <Home products={products} />
           </Route>
           <Route exact path='/cart'>
-            <Cart cart={cart} onEmptyCart={handleEmptyCart} />
+            <Cart
+              cart={cart}
+              onEmptyCart={handleEmptyCart}
+              onRemoveFromCart={handleRemoveFromCart}
+              onUpdateCartQty={handleUpdateCartQty}
+            />
           </Route>
           <Route path='/:id'>
             <Product onAddToCart={handleAddToCart} />
