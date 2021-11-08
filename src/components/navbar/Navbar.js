@@ -7,7 +7,9 @@ const Navbar = ({ cart }) => {
   return (
     <nav className='Navbar'>
       <div className='Navbar-inner-container'>
-        <h1>DISIN4MD</h1>
+        <Link to='/' className='logo'>
+          DISIN4MD
+        </Link>
         <div className='Navbar-links'>
           <a
             href='https://discord.gg/CyQUnFZJ'

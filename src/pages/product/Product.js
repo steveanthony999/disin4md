@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-import { commerce } from '../../lib/commerce';
+// import { commerce } from '../../lib/commerce';
 
 import './Product.css';
 
-const Product = ({ onAddToCart }) => {
+const Product = ({ item, onAddToCart }) => {
   const [variant, setVariant] = useState([]);
   const [sizeId, setSizeId] = useState();
   const location = useLocation();
@@ -17,6 +16,12 @@ const Product = ({ onAddToCart }) => {
   const handleChange = (e) => {
     setSizeId(e.target.value);
   };
+
+  //   useEffect(() => {
+  //     commerce.products
+  //       .getVariants(location.state.id)
+  //       .then((variants) => console.log(variants.data));
+  //   }, []);
 
   return (
     <div className='Product'>

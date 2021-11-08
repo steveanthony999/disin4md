@@ -30,8 +30,8 @@ function App() {
     fetchCart();
   }, []);
 
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
+  const handleAddToCart = async (productId, quantity, variantId) => {
+    const item = await commerce.cart.add(productId, quantity, variantId);
 
     setCart(item.cart);
   };
@@ -72,7 +72,7 @@ function App() {
             />
           </Route>
           <Route path='/:id'>
-            <Product onAddToCart={handleAddToCart} />
+            <Product onAddToCart={handleAddToCart} item={products} />
           </Route>
         </Switch>
       </div>

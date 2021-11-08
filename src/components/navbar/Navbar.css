@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.Navbar .Navbar-inner-container h1 {
+.Navbar .Navbar-inner-container .logo {
   color: black;
   font-family: 'Covered By Your Grace', cursive;
   font-size: 3rem;
