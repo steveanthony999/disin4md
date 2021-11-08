@@ -1,7 +1,7 @@
 import './Cart.css';
 import CartItem from './CartItem';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, onEmptyCart }) => {
   const EmptyCart = () => <h1>Your cart is empty</h1>;
 
   const FilledCart = () => (
@@ -12,7 +12,12 @@ const Cart = ({ cart }) => {
         </div>
       ))}
       <p>Subtotal: {cart.subtotal.formatted_with_symbol}</p>
-      <button>Empty Cart</button>
+      <button
+        onClick={() => {
+          onEmptyCart();
+        }}>
+        Empty Cart
+      </button>
       <button>Checkout</button>
     </>
   );
