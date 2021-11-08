@@ -54,7 +54,6 @@ function App() {
     setCart(response.cart);
   };
 
-  // console.log(cart);
   return (
     <Router>
       <div className='App'>

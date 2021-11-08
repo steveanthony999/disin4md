@@ -45,7 +45,11 @@ const Product = ({ onAddToCart }) => {
               </option>
             )}
             {variant.map((x) => (
-              <option value={x.id} key={x.id} id='sizes'>
+              <option
+                value={x.id}
+                key={x.id}
+                id='sizes'
+                disabled={x.inventory > 0 ? false : true}>
                 {x.description}
               </option>
             ))}
