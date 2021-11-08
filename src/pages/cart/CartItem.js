@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
+
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
+  useEffect(() => {
+    console.log(item);
+  }, [item]);
   return (
     <div className='CartItem'>
-      <img src={item.media} alt={item.name} />
+      <img src={item.image.url} alt={item.name} width='100px' />
       <h2>{item.name}</h2>
-      <p>Size M</p>
+      <p>Size {item.variant.description}</p>
       <h2>{item.line_total.formatted_with_symbol}</h2>
       <div className='CardItem-buttons'>
         <button onClick={() => onUpdateCartQty(item.id, item.quantity - 1)}>
