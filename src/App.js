@@ -18,7 +18,6 @@ function App() {
     const { data } = await commerce.products.list();
 
     setProducts(data);
-    console.log(products);
   };
 
   const fetchCart = async () => {

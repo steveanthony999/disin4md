@@ -1,7 +1,25 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { commerce } from '../../lib/commerce';
 import './Product.css';
 
 const Product = ({ product }) => {
+  const [variant, setVariant] = useState([]);
+  const [totalInventory, setTotalInventory] = useState([]);
+
+  useEffect(() => {
+    commerce.products.getVariants(product.id).then((x) => setVariant(x.data));
+  }, []);
+
+  useEffect(() => {
+    const tots = variant.reduce((total, item) => {
+      return total + item.inventory;
+    }, 0);
+
+    setTotalInventory(tots);
+    // console.log(totalInventory);
+  }, [variant, totalInventory]);
+
   return (
     <Link
       to={{
@@ -18,11 +36,14 @@ const Product = ({ product }) => {
           </div>
           <div className='Product-card-footer'>
             <p>${product.price.raw}</p>
-            <p
+            {/* <p
               style={{
                 color: product.inventory.available > 0 ? 'green' : 'red',
               }}>
               {product.inventory.available > 0 ? 'In Stock' : 'Sold Out'}
+            </p> */}
+            <p style={{ color: totalInventory > 0 ? 'green' : 'red' }}>
+              {totalInventory > 0 ? 'In Stock' : 'Sold Out'}
             </p>
           </div>
         </div>
