@@ -1,9 +1,4 @@
-import { useEffect } from 'react';
-
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
-  useEffect(() => {
-    console.log(item);
-  }, [item]);
   return (
     <div className='CartItem'>
       <img src={item.image.url} alt={item.name} width='100px' />
