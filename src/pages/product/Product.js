@@ -23,7 +23,7 @@ const Product = ({ onAddToCart }) => {
     commerce.products
       .getVariants(location.state.id)
       .then((x) => setVariant(x.data));
-  }, []);
+  }, [location.state.id]);
 
   return (
     <div className='Product'>
