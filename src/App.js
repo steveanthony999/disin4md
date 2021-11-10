@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
 import Product from './pages/product/Product';
 import Cart from './pages/cart/Cart';
+import Checkout from './pages/checkout/Checkout';
 
 import { commerce } from './lib/commerce';
 
@@ -68,6 +69,9 @@ function App() {
               onRemoveFromCart={handleRemoveFromCart}
               onUpdateCartQty={handleUpdateCartQty}
             />
+          </Route>
+          <Route exact path='/checkout'>
+            <Checkout />
           </Route>
           <Route path='/:id'>
             <Product onAddToCart={handleAddToCart} />

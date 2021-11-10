@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Cart.css';
 import CartItem from './CartItem';
 
@@ -17,7 +18,9 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
       ))}
       <p>Subtotal: {cart.subtotal.formatted_with_symbol}</p>
       <button onClick={onEmptyCart}>Empty Cart</button>
-      <button>Checkout</button>
+      <Link to='/checkout'>
+        <button>Checkout</button>
+      </Link>
     </>
   );
 
