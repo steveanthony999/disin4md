@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import './Cart.css';
 import CartItem from './CartItem';
+
+import './Cart.css';
 
 const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
   const EmptyCart = () => <h1>Your cart is empty</h1>;
