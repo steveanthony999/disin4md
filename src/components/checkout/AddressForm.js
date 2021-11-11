@@ -1,7 +1,21 @@
+import { useForm, FormProvider } from 'react-hook-form';
+
+import FormInput from './FormInput';
+
 const AddressForm = () => {
+  const methods = useForm();
+
   return (
     <div className='AddressForm'>
-      <h1>Address Form</h1>
+      <h4>Shipping Address</h4>
+      <FormProvider {...methods}>
+        <form onSubmit=''>
+          <div>
+            <FormInput required name='firstName' label='First Name' />
+            <FormInput required name='lastName' label='Last Name' />
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 };
