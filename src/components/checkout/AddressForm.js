@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { commerce } from '../../lib/commerce';
 
-const AddressForm = () => {
+const AddressForm = ({ checkoutToken }) => {
   const [field, setField] = useState({
     firstName: '',
     lastName: '',
@@ -10,6 +11,18 @@ const AddressForm = () => {
     state: '',
     zip: '',
   });
+
+  const fetchShippingCountries = async (checkoutTokenId) => {
+    const { countries } = await commerce.services.localeListShippingCountries(
+      checkoutTokenId
+    );
+
+    console.log(countries);
+  };
+
+  useEffect(() => {
+    fetchShippingCountries(checkoutToken.id);
+  }, []);
 
   return (
     <div className='AddressForm'>
