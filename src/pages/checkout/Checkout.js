@@ -1,15 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Stepper, Step, StepLabel, Paper } from '@mui/material';
 
 import AddressForm from '../../components/checkout/AddressForm';
 import PaymentForm from '../../components/checkout/PaymentForm';
 
 import './Checkout.css';
+import { commerce } from '../../lib/commerce';
 
 const steps = ['Shipping Address', 'Payment Details'];
 
-const Checkout = () => {
+const Checkout = ({ cart }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [checkoutToken, setCheckoutToken] = useState(null);
+
+  useEffect(() => {
+    const generateToken = async () => {
+      try {
+        const token = await commerce.checkout.generateToken(cart.id, {
+          type: 'cart',
+        });
+
+        console.log(token);
+
+        setCheckoutToken(token);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    generateToken();
+  }, []);
 
   const Form = () => (activeStep === 0 ? <AddressForm /> : <PaymentForm />);
 

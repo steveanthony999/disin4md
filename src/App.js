@@ -71,7 +71,7 @@ function App() {
             />
           </Route>
           <Route exact path='/checkout'>
-            <Checkout />
+            <Checkout cart={cart} />
           </Route>
           <Route path='/:id'>
             <Product onAddToCart={handleAddToCart} />
