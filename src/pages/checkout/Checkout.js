@@ -20,8 +20,6 @@ const Checkout = ({ cart }) => {
           type: 'cart',
         });
 
-        console.log(token);
-
         setCheckoutToken(token);
       } catch (error) {
         console.log(error);

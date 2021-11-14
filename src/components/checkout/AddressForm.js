@@ -1,3 +1,4 @@
+import { MenuItem, Select } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { commerce } from '../../lib/commerce';
 
@@ -12,17 +13,47 @@ const AddressForm = ({ checkoutToken }) => {
     zip: '',
   });
 
+  const [shippingCountries, setShippingCountries] = useState([]);
+  const [shippingCountry, setShippingCountry] = useState('');
+  const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
+  const [shippingSubdivision, setShippingSubdivision] = useState('');
+
+  const countries = Object.entries(shippingCountries).map(([code, name]) => ({
+    id: code,
+    label: name,
+  }));
+
+  const subdivisions = Object.entries(shippingSubdivisions).map(
+    ([code, name]) => ({
+      id: code,
+      label: name,
+    })
+  );
+
   const fetchShippingCountries = async (checkoutTokenId) => {
     const { countries } = await commerce.services.localeListShippingCountries(
       checkoutTokenId
     );
 
-    console.log(countries);
+    setShippingCountries(countries);
+    setShippingCountry(Object.keys(countries)[0]);
+  };
+
+  const fetchSubdivisions = async (countryCode) => {
+    const { subdivisions } =
+      await commerce.services.localeListShippingSubdivisions(countryCode);
+
+    setShippingSubdivisions(subdivisions);
+    setShippingSubdivision(Object.keys(subdivisions)[0]);
   };
 
   useEffect(() => {
     fetchShippingCountries(checkoutToken.id);
   }, []);
+
+  useEffect(() => {
+    if (shippingCountry) fetchSubdivisions(shippingCountry);
+  }, [shippingCountry]);
 
   return (
     <div className='AddressForm'>
@@ -70,13 +101,22 @@ const AddressForm = ({ checkoutToken }) => {
           placeholder='City'
         />
         {/* STATE */}
-        <input
+        {/* <input
           type='text'
           required
           value={field.state}
           onChange={(e) => setField({ ...field, state: e.target.value })}
           placeholder='State'
-        />
+        /> */}
+        <Select
+          value={shippingSubdivision}
+          onChange={(e) => setShippingSubdivision(e.target.value)}>
+          {subdivisions.map((subdivision) => (
+            <MenuItem key={subdivision.id} value={subdivision.id}>
+              {subdivision.label}
+            </MenuItem>
+          ))}
+        </Select>
         {/* ZIP */}
         <input
           type='text'
@@ -85,6 +125,16 @@ const AddressForm = ({ checkoutToken }) => {
           onChange={(e) => setField({ ...field, zip: e.target.value })}
           placeholder='Zip Code'
         />
+        {/* COUNTRY */}
+        <Select
+          value={shippingCountry}
+          onChange={(e) => setShippingCountry(e.target.value)}>
+          {countries.map((country) => (
+            <MenuItem key={country.id} value={country.id}>
+              {country.label}
+            </MenuItem>
+          ))}
+        </Select>
       </form>
     </div>
   );
