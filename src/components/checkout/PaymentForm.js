@@ -1,7 +1,16 @@
-const PaymentForm = () => {
+import {
+  Elements,
+  CardElement,
+  ElementsConsumer,
+} from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+import Review from './Review';
+
+const PaymentForm = ({ checkoutToken }) => {
   return (
     <div className='PaymentForm'>
-      <h1>Payment Form</h1>
+      <Review checkoutToken={checkoutToken} />
     </div>
   );
 };
