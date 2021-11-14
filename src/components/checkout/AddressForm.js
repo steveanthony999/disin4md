@@ -7,6 +7,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   const initialFormData = Object.freeze({
     firstName: '',
     lastName: '',
+    email: '',
     streetAddress: '',
     unitNumber: '',
     city: '',
@@ -107,6 +108,16 @@ const AddressForm = ({ checkoutToken, next }) => {
           name='lastName'
           onChange={handleChange}
           placeholder='Last Name'
+        />
+        {/* EMAIL */}
+        <input
+          type='text'
+          required
+          //   value={field.lastName}
+          //   onChange={(e) => setField({ ...field, lastName: e.target.value })}
+          name='email'
+          onChange={handleChange}
+          placeholder='email address'
         />
         {/* STREET ADDRESS */}
         <input
