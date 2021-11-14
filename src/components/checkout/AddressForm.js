@@ -9,7 +9,6 @@ const AddressForm = ({ checkoutToken }) => {
     streetAddress: '',
     unitNumber: '',
     city: '',
-    state: '',
     zip: '',
   });
 
@@ -40,8 +39,9 @@ const AddressForm = ({ checkoutToken }) => {
   };
 
   const fetchSubdivisions = async (countryCode) => {
-    const { subdivisions } =
-      await commerce.services.localeListShippingSubdivisions(countryCode);
+    const { subdivisions } = await commerce.services.localeListSubdivisions(
+      countryCode
+    );
 
     setShippingSubdivisions(subdivisions);
     setShippingSubdivision(Object.keys(subdivisions)[0]);
@@ -101,13 +101,6 @@ const AddressForm = ({ checkoutToken }) => {
           placeholder='City'
         />
         {/* STATE */}
-        {/* <input
-          type='text'
-          required
-          value={field.state}
-          onChange={(e) => setField({ ...field, state: e.target.value })}
-          placeholder='State'
-        /> */}
         <Select
           value={shippingSubdivision}
           onChange={(e) => setShippingSubdivision(e.target.value)}>
