@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import { MenuItem, Select } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { commerce } from '../../lib/commerce';
 
-const AddressForm = ({ checkoutToken }) => {
+const AddressForm = ({ checkoutToken, next }) => {
   const [field, setField] = useState({
     firstName: '',
     lastName: '',
@@ -55,10 +56,16 @@ const AddressForm = ({ checkoutToken }) => {
     if (shippingCountry) fetchSubdivisions(shippingCountry);
   }, [shippingCountry]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(e.target[0].value);
+  };
+
   return (
     <div className='AddressForm'>
       <h4>Shipping Address</h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         {/* FIRST NAME */}
         <input
           type='text'
@@ -128,6 +135,8 @@ const AddressForm = ({ checkoutToken }) => {
             </MenuItem>
           ))}
         </Select>
+        <Link to='/cart'>Back to cart</Link>
+        <button type='submit'>Next</button>
       </form>
     </div>
   );
