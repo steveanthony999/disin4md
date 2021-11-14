@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { commerce } from '../../lib/commerce';
 
 const AddressForm = ({ checkoutToken, next }) => {
-  const [field, setField] = useState({
+  const initialFormData = Object.freeze({
     firstName: '',
     lastName: '',
     streetAddress: '',
@@ -13,10 +13,32 @@ const AddressForm = ({ checkoutToken, next }) => {
     zip: '',
   });
 
+  const [formData, setFormData] = useState(initialFormData);
+
+  //   const [field, setField] = useState({
+  //     firstName: '',
+  //     lastName: '',
+  //     streetAddress: '',
+  //     unitNumber: '',
+  //     city: '',
+  //     zip: '',
+  //   });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState('');
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
   const [shippingSubdivision, setShippingSubdivision] = useState('');
+  const [shippingOptions, setShippingOptions] = useState([]);
+  const [shippingOption, setShippingOption] = useState('');
 
   const countries = Object.entries(shippingCountries).map(([code, name]) => ({
     id: code,
@@ -59,7 +81,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(e.target[0].value);
+    next({ ...formData, shippingCountry, shippingSubdivision, shippingOption });
   };
 
   return (
@@ -70,41 +92,51 @@ const AddressForm = ({ checkoutToken, next }) => {
         <input
           type='text'
           required
-          value={field.firstName}
-          onChange={(e) => setField({ ...field, firstName: e.target.value })}
+          //   value={field.firstName}
+          //   onChange={(e) => setField({ ...field, firstName: e.target.value })}
+          name='firstName'
+          onChange={handleChange}
           placeholder='First name'
         />
         {/* LAST NAME */}
         <input
           type='text'
           required
-          value={field.lastName}
-          onChange={(e) => setField({ ...field, lastName: e.target.value })}
+          //   value={field.lastName}
+          //   onChange={(e) => setField({ ...field, lastName: e.target.value })}
+          name='lastName'
+          onChange={handleChange}
           placeholder='Last Name'
         />
         {/* STREET ADDRESS */}
         <input
           type='text'
           required
-          value={field.streetAddress}
-          onChange={(e) =>
-            setField({ ...field, streetAddress: e.target.value })
-          }
+          //   value={field.streetAddress}
+          //   onChange={(e) =>
+          //     setField({ ...field, streetAddress: e.target.value })
+          //   }
+          name='streetAddress'
+          onChange={handleChange}
           placeholder='Street Address'
         />
         {/* UNIT/APT */}
         <input
           type='text'
-          value={field.unitNumber}
-          onChange={(e) => setField({ ...field, unitNumber: e.target.value })}
+          //   value={field.unitNumber}
+          //   onChange={(e) => setField({ ...field, unitNumber: e.target.value })}
+          name='unitNumber'
+          onChange={handleChange}
           placeholder='Unit/Apt Number'
         />
         {/* CITY */}
         <input
           type='text'
           required
-          value={field.city}
-          onChange={(e) => setField({ ...field, city: e.target.value })}
+          //   value={field.city}
+          //   onChange={(e) => setField({ ...field, city: e.target.value })}
+          name='city'
+          onChange={handleChange}
           placeholder='City'
         />
         {/* STATE */}
@@ -121,8 +153,10 @@ const AddressForm = ({ checkoutToken, next }) => {
         <input
           type='text'
           required
-          value={field.zip}
-          onChange={(e) => setField({ ...field, zip: e.target.value })}
+          //   value={field.zip}
+          //   onChange={(e) => setField({ ...field, zip: e.target.value })}
+          name='zip'
+          onChange={handleChange}
           placeholder='Zip Code'
         />
         {/* COUNTRY */}
