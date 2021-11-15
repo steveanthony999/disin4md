@@ -39,7 +39,7 @@ const AddressForm = ({ checkoutToken, next }) => {
     );
 
     setShippingCountries(countries);
-    setShippingCountry(Object.keys(countries)[0].id);
+    setShippingCountry(Object.keys(countries)[2]);
   };
 
   const fetchSubdivisions = async (countryCode) => {
@@ -48,7 +48,7 @@ const AddressForm = ({ checkoutToken, next }) => {
     );
 
     setShippingSubdivisions(subdivisions);
-    setShippingSubdivision(Object.keys(subdivisions)[0].id);
+    setShippingSubdivision(Object.keys(subdivisions)[0]);
   };
 
   const fetchShippingOptions = async (
@@ -74,12 +74,13 @@ const AddressForm = ({ checkoutToken, next }) => {
   }, [shippingCountry]);
 
   useEffect(() => {
-    if (shippingSubdivision)
+    if (shippingSubdivision) {
       fetchShippingOptions(
         checkoutToken.id,
         shippingCountry,
         shippingSubdivision
       );
+    }
   }, [shippingSubdivision]);
 
   return (
