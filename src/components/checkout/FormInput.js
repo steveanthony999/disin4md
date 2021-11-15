@@ -7,6 +7,7 @@ const FormInput = ({ name, label, required }) => {
     <div className='FormInput'>
       <Controller
         as={TextField}
+        defaultValue=''
         control={control}
         name={name}
         label={label}
