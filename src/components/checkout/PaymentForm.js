@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import Review from './Review';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY_TEST);
 
 const PaymentForm = ({
   checkoutToken,
@@ -41,6 +41,7 @@ const PaymentForm = ({
         shipping: {
           name: 'Primary',
           street: shippingData.streetAddress,
+          unit: shippingData.unitNumber,
           town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
           postal_zip_code: shippingData.zip,
