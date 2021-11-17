@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import Cart from '../../assets/cart-1.svg';
@@ -6,7 +7,7 @@ import './Navbar.css';
 const Navbar = ({ cart }) => {
   return (
     <nav className='Navbar'>
-      <div className='Navbar-inner-container'>
+      <Paper className='Navbar-inner-container' elevation={24}>
         <Link to='/' className='logo'>
           DISIN4MD
         </Link>
@@ -25,7 +26,7 @@ const Navbar = ({ cart }) => {
             </div>
           </Link>
         </div>
-      </div>
+      </Paper>
     </nav>
   );
 };
