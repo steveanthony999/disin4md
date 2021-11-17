@@ -7,7 +7,7 @@ import './Navbar.css';
 const Navbar = ({ cart }) => {
   return (
     <nav className='Navbar'>
-      <Paper className='Navbar-inner-container' elevation={24}>
+      <Paper className='Navbar-inner-container' elevation={12}>
         <Link to='/' className='logo'>
           DISIN4MD
         </Link>

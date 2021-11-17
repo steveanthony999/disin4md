@@ -8,9 +8,9 @@
 }
 
 .Product .Product-card:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
+  /* cursor: pointer; */
+  /* transform: scale(1.05); */
+  /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05); */
 }
 
 .Product .Product-card .Product-card-body {

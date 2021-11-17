@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { commerce } from '../../lib/commerce';
 import './Product.css';
@@ -25,7 +26,7 @@ const Product = ({ product }) => {
         pathname: `/${product.id}`,
         state: product,
       }}>
-      <div className='Product'>
+      <Paper className='Product' elevation={12}>
         <div className='Product-card'>
           <div className='Product-card-header'>
             <img src={product.assets[0].url} alt='' width='200px' />
@@ -40,7 +41,7 @@ const Product = ({ product }) => {
             </p>
           </div>
         </div>
-      </div>
+      </Paper>
     </Link>
   );
 };
