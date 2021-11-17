@@ -41,7 +41,6 @@ const PaymentForm = ({
         shipping: {
           name: 'Primary',
           street: shippingData.streetAddress,
-          unit: shippingData.unitNumber,
           town_city: shippingData.city,
           county_state: shippingData.shippingSubdivision,
           postal_zip_code: shippingData.zip,

@@ -101,8 +101,11 @@ const AddressForm = ({ checkoutToken, next }) => {
           <FormInput required name='firstName' label='First Name' />
           <FormInput required name='lastName' label='Last Name' />
           <FormInput required name='email' label='Email' />
-          <FormInput required name='streetAddress' label='Street Address' />
-          <FormInput name='unitNumber' label='Apt / Unit Number' />
+          <FormInput
+            required
+            name='streetAddress'
+            label='Street Address (including apt / unit number)'
+          />
           <FormInput required name='city' label='City' />
           <FormInput required name='zip' label='Zip / Postal Code' />
           <InputLabel>Shipping Country</InputLabel>
