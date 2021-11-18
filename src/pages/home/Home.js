@@ -1,12 +1,16 @@
+import { motion } from 'framer-motion';
+
 import Products from '../../components/products/Products';
 
 import './Home.css';
 
 const Home = ({ products }) => {
   return (
-    <div className='Home'>
+    <motion.div
+      className='Home'
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut' } }}>
       <Products products={products} />
-    </div>
+    </motion.div>
   );
 };
 

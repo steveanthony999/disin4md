@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -7,23 +8,38 @@ import './Navbar.css';
 const Navbar = ({ cart }) => {
   return (
     <nav className='Navbar'>
-      <Paper className='Navbar-inner-container' elevation={12}>
-        <Link to='/' className='logo'>
-          DISIN4MD
-        </Link>
+      <Paper className='Navbar-inner-container' elevation={8}>
+        <motion.div
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.1 },
+          }}>
+          <Link to='/' className='logo'>
+            DISIN4MD
+          </Link>
+        </motion.div>
         <div className='Navbar-links'>
-          <a
+          <motion.a
             href='https://discord.gg/CyQUnFZJ'
             target='_blank'
-            rel='noreferrer'>
+            rel='noreferrer'
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.1 },
+            }}>
             COMMUNITY
-          </a>
+          </motion.a>
           <Link to='/cart'>
-            <div className='Navbar-cart'>
+            <motion.div
+              className='Navbar-cart'
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.1 },
+              }}>
               CART
               <img src={Cart} alt='cart' />
               <p>{cart}</p>
-            </div>
+            </motion.div>
           </Link>
         </div>
       </Paper>

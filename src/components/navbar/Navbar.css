@@ -33,9 +33,9 @@
   transition: all 0.1s;
 }
 
-.Navbar .Navbar-inner-container .Navbar-links a:hover {
+/* .Navbar .Navbar-inner-container .Navbar-links a:hover {
   transform: scale(1.05);
-}
+} */
 
 .Navbar .Navbar-inner-container .Navbar-links .Navbar-cart {
   display: flex;

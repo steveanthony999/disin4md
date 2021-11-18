@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { commerce } from '../../lib/commerce';
 import './Product.css';
 
@@ -21,28 +22,36 @@ const Product = ({ product }) => {
   }, [variant, totalInventory]);
 
   return (
-    <Link
-      to={{
-        pathname: `/${product.id}`,
-        state: product,
+    <motion.div
+      animate={{ opacity: 0.8 }}
+      whileHover={{
+        scale: 1.05,
+        opacity: 1,
+        transition: { duration: 0.1 },
       }}>
-      <Paper className='Product' elevation={12}>
-        <div className='Product-card'>
-          <div className='Product-card-header'>
-            <img src={product.assets[0].url} alt='' width='200px' />
+      <Link
+        to={{
+          pathname: `/${product.id}`,
+          state: product,
+        }}>
+        <Paper className='Product' elevation={12}>
+          <div className='Product-card'>
+            <div className='Product-card-header'>
+              <img src={product.assets[0].url} alt='' width='200px' />
+            </div>
+            <div className='Product-card-body'>
+              <h1>{product.name}</h1>
+            </div>
+            <div className='Product-card-footer'>
+              <p>${product.price.raw}</p>
+              <p style={{ color: totalInventory > 0 ? 'green' : 'red' }}>
+                {totalInventory > 0 ? 'In Stock' : 'Sold Out'}
+              </p>
+            </div>
           </div>
-          <div className='Product-card-body'>
-            <h1>{product.name}</h1>
-          </div>
-          <div className='Product-card-footer'>
-            <p>${product.price.raw}</p>
-            <p style={{ color: totalInventory > 0 ? 'green' : 'red' }}>
-              {totalInventory > 0 ? 'In Stock' : 'Sold Out'}
-            </p>
-          </div>
-        </div>
-      </Paper>
-    </Link>
+        </Paper>
+      </Link>
+    </motion.div>
   );
 };
 

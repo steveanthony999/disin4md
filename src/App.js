@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
 import Navbar from './components/navbar/Navbar';
 
 import Home from './pages/home/Home';
@@ -12,6 +14,8 @@ import { commerce } from './lib/commerce';
 import './App.css';
 
 function App() {
+  const location = useLocation();
+
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
@@ -77,35 +81,37 @@ function App() {
   };
 
   return (
-    <Router>
+    <>
       <div className='App'>
         <Navbar cart={cart.total_items} />
-        <Switch>
-          <Route exact path='/'>
-            <Home products={products} />
-          </Route>
-          <Route exact path='/cart'>
-            <Cart
-              cart={cart}
-              onEmptyCart={handleEmptyCart}
-              onRemoveFromCart={handleRemoveFromCart}
-              onUpdateCartQty={handleUpdateCartQty}
-            />
-          </Route>
-          <Route exact path='/checkout'>
-            <Checkout
-              cart={cart}
-              order={order}
-              onCaptureCheckout={handleCaptureCheckout}
-              error={errorMessage}
-            />
-          </Route>
-          <Route path='/:id'>
-            <Product onAddToCart={handleAddToCart} />
-          </Route>
-        </Switch>
+        <AnimatePresence>
+          <Switch location={location} key={location.key}>
+            <Route exact path='/'>
+              <Home products={products} />
+            </Route>
+            <Route exact path='/cart'>
+              <Cart
+                cart={cart}
+                onEmptyCart={handleEmptyCart}
+                onRemoveFromCart={handleRemoveFromCart}
+                onUpdateCartQty={handleUpdateCartQty}
+              />
+            </Route>
+            <Route exact path='/checkout'>
+              <Checkout
+                cart={cart}
+                order={order}
+                onCaptureCheckout={handleCaptureCheckout}
+                error={errorMessage}
+              />
+            </Route>
+            <Route path='/:id'>
+              <Product onAddToCart={handleAddToCart} />
+            </Route>
+          </Switch>
+        </AnimatePresence>
       </div>
-    </Router>
+    </>
   );
 }
 
