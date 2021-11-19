@@ -84,7 +84,7 @@ function App() {
     <>
       <div className='App'>
         <Navbar cart={cart.total_items} />
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.key}>
             <Route exact path='/'>
               <Home products={products} />

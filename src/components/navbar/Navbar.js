@@ -7,7 +7,11 @@ import './Navbar.css';
 
 const Navbar = ({ cart }) => {
   return (
-    <nav className='Navbar'>
+    <motion.nav
+      className='Navbar'
+      initial={{ y: -250 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}>
       <Paper className='Navbar-inner-container' elevation={8}>
         <motion.div
           whileHover={{
@@ -43,7 +47,7 @@ const Navbar = ({ cart }) => {
           </Link>
         </div>
       </Paper>
-    </nav>
+    </motion.nav>
   );
 };
 

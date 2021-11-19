@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { commerce } from '../../lib/commerce';
 
@@ -26,7 +27,15 @@ const Product = ({ onAddToCart }) => {
   }, [location.state.id]);
 
   return (
-    <div className='Product'>
+    <motion.div
+      className='Product'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 1 },
+      }}>
       <div className='Product-container'>
         <div className='Product-left'>
           <img src={location.state.assets[0].url} alt='' width='300px' />
@@ -61,7 +70,7 @@ const Product = ({ onAddToCart }) => {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
