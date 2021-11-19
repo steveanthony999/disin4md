@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { commerce } from '../../lib/commerce';
@@ -36,9 +37,9 @@ const Product = ({ onAddToCart }) => {
         opacity: 0,
         transition: { duration: 1 },
       }}>
-      <div className='Product-container'>
+      <Paper className='Product-container' elevation={8}>
         <div className='Product-left'>
-          <img src={location.state.assets[0].url} alt='' width='300px' />
+          <img src={location.state.assets[0].url} alt='product' />
         </div>
         <div className='Product-right'>
           <h1>{location.state.name}</h1>
@@ -63,13 +64,21 @@ const Product = ({ onAddToCart }) => {
               </option>
             ))}
           </select>
-          <button
+          <motion.button
+            className='btn btn-primary'
             onClick={() => onAddToCart(location.state.id, 1, sizeId)}
-            disabled={!isCartButtonActive}>
+            disabled={!isCartButtonActive}
+            whileHover={{
+              scale: 1.05,
+              transition: {
+                duration: 0.1,
+                type: 'spring',
+              },
+            }}>
             ADD TO CART
-          </button>
+          </motion.button>
         </div>
-      </div>
+      </Paper>
     </motion.div>
   );
 };

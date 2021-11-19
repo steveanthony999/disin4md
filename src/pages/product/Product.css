@@ -8,3 +8,7 @@
 .Product .Product-container {
   display: flex;
 }
+
+.Product .Product-container .Product-left img {
+  width: 400px;
+}
