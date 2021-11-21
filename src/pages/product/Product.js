@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import data from '../../data';
 import { commerce } from '../../lib/commerce';
 
 import './Product.css';
@@ -43,12 +44,23 @@ const Product = ({ onAddToCart }) => {
         </div>
         <div className='Product-right'>
           <h1>{location.state.name}</h1>
-          <p>${location.state.price.raw} USD</p>
-          <p
+          <h4
             dangerouslySetInnerHTML={{
               __html: location.state.description,
-            }}></p>
-          <select name='sizes' onChange={handleChange}>
+            }}></h4>
+          <br />
+          <ul>
+            <li>{data[0].nextLevel.weight}</li>
+            <li>{data[0].nextLevel.gsmSingles}</li>
+            <li>{data[0].nextLevel.shrink}</li>
+            <li>{data[0].nextLevel.shoulder}</li>
+            <li>{data[0].nextLevel.sleeves}</li>
+            <li>{data[0].nextLevel.fit}</li>
+          </ul>
+          <br />
+          <p>${location.state.price.raw} USD</p>
+          <br />
+          <select className='select-full' name='sizes' onChange={handleChange}>
             {isCartButtonActive ? null : (
               <option value={null} id='sizes'>
                 --Select Size
@@ -65,17 +77,19 @@ const Product = ({ onAddToCart }) => {
             ))}
           </select>
           <motion.button
-            className='btn btn-primary'
+            className={isCartButtonActive ? 'btn-full' : 'btn-full-disabled'}
             onClick={() => onAddToCart(location.state.id, 1, sizeId)}
             disabled={!isCartButtonActive}
-            whileHover={{
-              scale: 1.05,
-              transition: {
-                duration: 0.1,
-                type: 'spring',
-              },
-            }}>
-            ADD TO CART
+            whileHover={
+              isCartButtonActive && {
+                scale: 1.01,
+                transition: {
+                  duration: 0.1,
+                  type: 'spring',
+                },
+              }
+            }>
+            {isCartButtonActive ? 'ADD TO CART' : 'SELECT A SIZE'}
           </motion.button>
         </div>
       </Paper>

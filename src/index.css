@@ -34,3 +34,49 @@ a {
 .btn:hover {
   cursor: pointer;
 }
+
+.btn-full {
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: black;
+}
+
+.btn-full:hover {
+  cursor: pointer;
+}
+
+.btn-full-disabled {
+  width: 100%;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: black;
+  opacity: 0.5;
+}
+
+select {
+  outline: none;
+  appearance: none;
+}
+
+select option {
+  background: white;
+}
+
+.select-full {
+  width: 100%;
+  height: 50px;
+  padding: 1rem;
+}
