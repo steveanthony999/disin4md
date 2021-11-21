@@ -1,10 +1,12 @@
+import './Cart.css';
+
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
   return (
     <div className='CartItem'>
-      <img src={item.image.url} alt={item.name} width='100px' />
-      <h2>{item.name}</h2>
+      <img src={item.image.url} alt={item.name} />
+      <p>{item.name}</p>
       <p>Size {item.variant.description}</p>
-      <h2>{item.line_total.formatted_with_symbol}</h2>
+      <p>{item.line_total.formatted_with_symbol}</p>
       <div className='CardItem-buttons'>
         <button onClick={() => onUpdateCartQty(item.id, item.quantity - 1)}>
           -

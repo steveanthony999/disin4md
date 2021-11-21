@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
 
@@ -17,11 +18,15 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
           />
         </div>
       ))}
-      <p>Subtotal: {cart.subtotal.formatted_with_symbol}</p>
-      <button onClick={onEmptyCart}>Empty Cart</button>
-      <Link to='/checkout'>
-        <button>Checkout</button>
-      </Link>
+      <div className='Cart-info'>
+        <div className='Cart-info-top'>
+          <button onClick={onEmptyCart}>Empty Cart</button>
+          <p>Subtotal: {cart.subtotal.formatted_with_symbol}</p>
+        </div>
+        <Link to='/checkout'>
+          <button className='btn-full'>Checkout</button>
+        </Link>
+      </div>
     </>
   );
 
@@ -31,7 +36,9 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
 
   return (
     <div className='Cart'>
-      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      <Paper className='Cart-container' elevation={8}>
+        {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      </Paper>
     </div>
   );
 };
