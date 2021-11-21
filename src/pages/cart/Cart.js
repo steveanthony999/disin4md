@@ -1,11 +1,20 @@
+import { motion } from 'framer-motion';
 import { Paper } from '@mui/material';
+import RemoveShoppingCartOutlinedIcon from '@mui/icons-material/RemoveShoppingCartOutlined';
+import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem';
 
 import './Cart.css';
 
 const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
-  const EmptyCart = () => <h1>Your cart is empty</h1>;
+  const EmptyCart = () => (
+    <div className='empty'>
+      <SentimentVeryDissatisfiedOutlinedIcon fontSize='large' />
+      <br />
+      <p>So empty</p>
+    </div>
+  );
 
   const FilledCart = () => (
     <>
@@ -20,11 +29,32 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
       ))}
       <div className='Cart-info'>
         <div className='Cart-info-top'>
-          <button onClick={onEmptyCart}>Empty Cart</button>
+          <motion.div
+            className='btn-remove'
+            onClick={onEmptyCart}
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 0.1,
+                type: 'spring',
+              },
+            }}>
+            <RemoveShoppingCartOutlinedIcon />
+          </motion.div>
           <p>Subtotal: {cart.subtotal.formatted_with_symbol}</p>
         </div>
         <Link to='/checkout'>
-          <button className='btn-full'>Checkout</button>
+          <motion.button
+            className='btn-full'
+            whileHover={{
+              scale: 1.01,
+              transition: {
+                duration: 0.1,
+                type: 'spring',
+              },
+            }}>
+            CHECKOUT
+          </motion.button>
         </Link>
       </div>
     </>
@@ -35,11 +65,19 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
   }
 
   return (
-    <div className='Cart'>
+    <motion.div
+      className='Cart'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.5 },
+      }}>
       <Paper className='Cart-container' elevation={8}>
         {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
       </Paper>
-    </div>
+    </motion.div>
   );
 };
 

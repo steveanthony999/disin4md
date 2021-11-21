@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Paper } from '@mui/material';
 import { motion } from 'framer-motion';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import { useLocation } from 'react-router-dom';
 import data from '../../data';
 import { commerce } from '../../lib/commerce';

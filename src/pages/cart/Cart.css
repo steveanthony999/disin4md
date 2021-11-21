@@ -60,3 +60,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.btn-remove:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

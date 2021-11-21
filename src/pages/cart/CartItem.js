@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+import CancelIcon from '@mui/icons-material/Cancel';
+
 import './Cart.css';
 
 const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
@@ -16,7 +19,18 @@ const CartItem = ({ item, onRemoveFromCart, onUpdateCartQty }) => {
           +
         </button>
       </div>
-      <button onClick={() => onRemoveFromCart(item.id)}>Remove</button>
+      <motion.div
+        className='btn-remove'
+        whileHover={{
+          scale: 1.1,
+          transition: {
+            duration: 0.1,
+            type: 'spring',
+          },
+        }}
+        onClick={() => onRemoveFromCart(item.id)}>
+        <CancelIcon />
+      </motion.div>
     </div>
   );
 };
