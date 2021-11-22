@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
-import { InputLabel, MenuItem, Select } from '@mui/material';
+import { Grid, InputLabel, MenuItem, Select } from '@mui/material';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useEffect, useState } from 'react';
 import { commerce } from '../../lib/commerce';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import FormInput from './FormInput';
+
+import './AddressForm.css';
 
 const AddressForm = ({ checkoutToken, next }) => {
   const methods = useForm();
@@ -86,10 +89,9 @@ const AddressForm = ({ checkoutToken, next }) => {
   return (
     <div className='AddressForm'>
       <h4>Shipping Address</h4>
-      {/*  */}
-      {/*  */}
       <FormProvider {...methods}>
         <form
+          className='AddressForm-form'
           onSubmit={methods.handleSubmit((data) =>
             next({
               ...data,
@@ -98,52 +100,65 @@ const AddressForm = ({ checkoutToken, next }) => {
               shippingOption,
             })
           )}>
-          <FormInput required name='firstName' label='First Name' />
-          <FormInput required name='lastName' label='Last Name' />
-          <FormInput required name='email' label='Email' />
-          <FormInput
-            required
-            name='streetAddress'
-            label='Street Address (including apt / unit number)'
-          />
-          <FormInput required name='city' label='City' />
-          <FormInput required name='zip' label='Zip / Postal Code' />
-          <InputLabel>Shipping Country</InputLabel>
-          <Select
-            value={shippingCountry}
-            onChange={(e) => setShippingCountry(e.target.value)}>
-            {countries.map((country) => (
-              <MenuItem key={country.id} value={country.id}>
-                {country.label}
-              </MenuItem>
-            ))}
-          </Select>
-          <InputLabel>Shipping Subdivision</InputLabel>
-          <Select
-            value={shippingSubdivision}
-            onChange={(e) => setShippingSubdivision(e.target.value)}>
-            {subdivisions.map((subdivision) => (
-              <MenuItem key={subdivision.id} value={subdivision.id}>
-                {subdivision.label}
-              </MenuItem>
-            ))}
-          </Select>
-          <InputLabel>Shipping Options</InputLabel>
-          <Select
-            value={shippingOption}
-            onChange={(e) => setShippingOption(e.target.value)}>
-            {options.map((option) => (
-              <MenuItem key={option.id} value={option.id}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </Select>
-          <Link to='/cart'>Back to cart</Link>
-          <button type='submit'>Next</button>
+          <Grid container spacing={3}>
+            <FormInput required name='firstName' label='First Name' />
+            <FormInput required name='lastName' label='Last Name' />
+
+            <FormInput required name='email' label='Email' />
+            <FormInput
+              required
+              name='streetAddress'
+              label='Street Address (including apt / unit number)'
+            />
+            <FormInput required name='city' label='City' />
+            <FormInput required name='zip' label='Zip / Postal Code' />
+            <Grid item xs={12} sm={6}>
+              <InputLabel>Shipping Country</InputLabel>
+              <Select
+                value={shippingCountry}
+                onChange={(e) => setShippingCountry(e.target.value)}>
+                {countries.map((country) => (
+                  <MenuItem key={country.id} value={country.id}>
+                    {country.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <InputLabel>Shipping Subdivision</InputLabel>
+              <Select
+                value={shippingSubdivision}
+                onChange={(e) => setShippingSubdivision(e.target.value)}>
+                {subdivisions.map((subdivision) => (
+                  <MenuItem key={subdivision.id} value={subdivision.id}>
+                    {subdivision.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <InputLabel>Shipping Options</InputLabel>
+              <Select
+                value={shippingOption}
+                onChange={(e) => setShippingOption(e.target.value)}>
+                {options.map((option) => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Grid>
+          </Grid>
+          <div className='AddressForm-submit'>
+            <Link to='/cart'>
+              <ShoppingCartOutlinedIcon />
+            </Link>
+            <button type='submit' className='btn-full'>
+              Next
+            </button>
+          </div>
         </form>
       </FormProvider>
-      {/*  */}
-      {/*  */}
     </div>
   );
 };

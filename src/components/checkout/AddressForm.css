@@ -1,0 +1,18 @@
+.AddressForm h4 {
+  margin-bottom: 2rem;
+}
+
+.AddressForm-form div {
+  width: 100%;
+}
+
+.AddressForm-submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.AddressForm-submit .btn-full {
+  width: 200px;
+}
