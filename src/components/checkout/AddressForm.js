@@ -1,11 +1,13 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { useEffect, useState } from 'react';
-import { commerce } from '../../lib/commerce';
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { useForm, FormProvider } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 import FormInput from './FormInput';
+import { commerce } from '../../lib/commerce';
 
 import './AddressForm.css';
 
@@ -150,12 +152,22 @@ const AddressForm = ({ checkoutToken, next }) => {
             </Grid>
           </Grid>
           <div className='AddressForm-submit'>
-            <Link to='/cart'>
+            <Link to='/cart' className='btn-remove'>
+              <ArrowBackOutlinedIcon />
               <ShoppingCartOutlinedIcon />
             </Link>
-            <button type='submit' className='btn-full'>
+            <motion.button
+              type='submit'
+              className='btn-full'
+              whileHover={{
+                scale: 1.01,
+                transition: {
+                  duration: 0.1,
+                  type: 'spring',
+                },
+              }}>
               Next
-            </button>
+            </motion.button>
           </div>
         </form>
       </FormProvider>

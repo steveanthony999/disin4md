@@ -80,3 +80,12 @@ select option {
   height: 50px;
   padding: 1rem;
 }
+
+.btn-remove {
+  color: black;
+}
+
+.btn-remove:hover {
+  cursor: pointer;
+  color: red;
+}
