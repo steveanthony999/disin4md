@@ -11,7 +11,7 @@ import { commerce } from '../../lib/commerce';
 
 import './AddressForm.css';
 
-const AddressForm = ({ checkoutToken, next }) => {
+const AddressForm = ({ checkoutToken, next, userDataFromStorage }) => {
   const methods = useForm();
 
   const [shippingCountries, setShippingCountries] = useState([]);
@@ -103,17 +103,43 @@ const AddressForm = ({ checkoutToken, next }) => {
             })
           )}>
           <Grid container spacing={3}>
-            <FormInput required name='firstName' label='First Name' />
-            <FormInput required name='lastName' label='Last Name' />
+            <FormInput
+              required
+              name='firstName'
+              label='First Name'
+              defaultValue={userDataFromStorage.firstName}
+            />
+            <FormInput
+              required
+              name='lastName'
+              label='Last Name'
+              defaultValue={userDataFromStorage.lastName}
+            />
 
-            <FormInput required name='email' label='Email' />
+            <FormInput
+              required
+              name='email'
+              label='Email'
+              defaultValue={userDataFromStorage.email}
+            />
             <FormInput
               required
               name='streetAddress'
               label='Street Address (including apt / unit number)'
+              defaultValue={userDataFromStorage.streetAddress}
             />
-            <FormInput required name='city' label='City' />
-            <FormInput required name='zip' label='Zip / Postal Code' />
+            <FormInput
+              required
+              name='city'
+              label='City'
+              defaultValue={userDataFromStorage.city}
+            />
+            <FormInput
+              required
+              name='zip'
+              label='Zip / Postal Code'
+              defaultValue={userDataFromStorage.zip}
+            />
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Country</InputLabel>
               <Select

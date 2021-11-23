@@ -20,6 +20,7 @@ function App() {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const [userDataFromStorage, setUserDataFromStorage] = useState();
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -80,6 +81,28 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      setUserDataFromStorage(userData);
+    } else {
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          firstName: '',
+          lastName: '',
+          email: '',
+          streetAddress: '',
+          city: '',
+          zip: '',
+        })
+      );
+
+      const userData = JSON.parse(localStorage.getItem('user'));
+      setUserDataFromStorage(userData);
+    }
+  }, []);
+
   return (
     <>
       <div className='App'>
@@ -103,6 +126,7 @@ function App() {
                 order={order}
                 onCaptureCheckout={handleCaptureCheckout}
                 error={errorMessage}
+                userDataFromStorage={userDataFromStorage}
               />
             </Route>
             <Route path='/:id'>
