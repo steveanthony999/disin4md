@@ -1,0 +1,19 @@
+.PaymentForm {
+  width: 100%;
+}
+
+.PaymentForm-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PaymentForm-back:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.PaymentForm-footer .btn-full {
+  width: 200px;
+}

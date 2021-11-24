@@ -1,18 +1,35 @@
+import { Typography, List, ListItem, ListItemText } from '@mui/material';
+
 const Review = ({ checkoutToken }) => {
   return (
-    <div className='Review'>
-      <h1>Order Summary</h1>
-      <ul>
+    <>
+      <Typography variant='h6'>Order Summary</Typography>
+      <List disablePadding>
         {checkoutToken.live.line_items.map((product) => (
-          <li key={product.id}>
-            <img src={product.image.url} alt='product' width='200px' />
-            {product.name} {product.variant.description} {product.quantity}
-            {product.line_total.formatted_with_symbol}
-          </li>
+          <ListItem style={{ padding: '10px 0' }} key={product.id}>
+            <img
+              src={product.image.url}
+              alt='product'
+              width='50px'
+              style={{ marginRight: '10px' }}
+            />
+            <ListItemText
+              primary={product.name}
+              secondary={`Quantity: ${product.quantity}`}
+            />
+            <Typography variant='body2'>
+              {product.line_total.formatted_with_symbol}
+            </Typography>
+          </ListItem>
         ))}
-        <li>{checkoutToken.live.subtotal.formatted_with_symbol}</li>
-      </ul>
-    </div>
+        <ListItem style={{ padding: '10px 0' }}>
+          <ListItemText primary='Total' />
+          <Typography variant='subtitle1' style={{ fontWeight: 700 }}>
+            {checkoutToken.live.subtotal.formatted_with_symbol}
+          </Typography>
+        </ListItem>
+      </List>
+    </>
   );
 };
 

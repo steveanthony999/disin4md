@@ -1,9 +1,14 @@
+import { Typography } from '@mui/material';
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import { motion } from 'framer-motion';
 import {
   Elements,
   CardElement,
   ElementsConsumer,
 } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+
+import './PaymentForm.css';
 
 import Review from './Review';
 
@@ -72,7 +77,9 @@ const PaymentForm = ({
     <div className='PaymentForm'>
       <Review checkoutToken={checkoutToken} />
       <hr />
-      <h1>Payment Method</h1>
+      <Typography variant='h6' gutterBottom style={{ margin: '20px 0' }}>
+        Payment Method
+      </Typography>
       <Elements stripe={stripePromise}>
         <ElementsConsumer>
           {({ elements, stripe }) => (
@@ -80,11 +87,32 @@ const PaymentForm = ({
               <CardElement />
               <br />
               <br />
-              <div>
-                <button onClick={backStep}>Back</button>
-                <button type='submit' disabled={!stripe}>
+              <div className='PaymentForm-footer'>
+                <motion.div
+                  onClick={backStep}
+                  className='PaymentForm-back'
+                  whileHover={{
+                    scale: 1.05,
+                    transition: {
+                      duration: 0.1,
+                      type: 'spring',
+                    },
+                  }}>
+                  <ArrowBackOutlinedIcon />
+                </motion.div>
+                <motion.button
+                  className='btn-full'
+                  type='submit'
+                  disabled={!stripe}
+                  whileHover={{
+                    scale: 1.01,
+                    transition: {
+                      duration: 0.1,
+                      type: 'spring',
+                    },
+                  }}>
                   Pay {checkoutToken.live.subtotal.formatted_with_symbol}
-                </button>
+                </motion.button>
               </div>
             </form>
           )}

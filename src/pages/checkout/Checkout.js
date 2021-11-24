@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Stepper, Step, StepLabel, Paper } from '@mui/material';
+import { motion } from 'framer-motion';
 
 import AddressForm from '../../components/checkout/AddressForm';
 import PaymentForm from '../../components/checkout/PaymentForm';
@@ -66,7 +67,15 @@ const Checkout = ({
     );
 
   return (
-    <div className='Checkout'>
+    <motion.div
+      className='Checkout'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.5 },
+      }}>
       <div className='Checkout-container'>
         <Paper elevation={3}>
           <h1>Checkout</h1>
@@ -84,7 +93,7 @@ const Checkout = ({
           )}
         </Paper>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
