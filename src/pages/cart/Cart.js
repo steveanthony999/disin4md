@@ -13,6 +13,15 @@ const Cart = ({ cart, onEmptyCart, onRemoveFromCart, onUpdateCartQty }) => {
       <SentimentVeryDissatisfiedOutlinedIcon fontSize='large' />
       <br />
       <p>So empty</p>
+      <Link
+        to='/'
+        style={{
+          marginTop: '1rem',
+          color: 'black',
+          textDecoration: 'underline',
+        }}>
+        go shopping
+      </Link>
     </div>
   );
 

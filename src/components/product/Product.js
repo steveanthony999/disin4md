@@ -23,10 +23,8 @@ const Product = ({ product }) => {
 
   return (
     <motion.div
-      animate={{ opacity: 0.8 }}
       whileHover={{
         scale: 1.05,
-        opacity: 1,
         transition: { duration: 0.1 },
       }}>
       <Link

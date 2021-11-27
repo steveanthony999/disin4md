@@ -6,7 +6,10 @@
 }
 
 body {
-  background: rgba(250, 250, 250, 1);
+  background: url('./assets/bg_1.jpg') no-repeat top center/cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 a {

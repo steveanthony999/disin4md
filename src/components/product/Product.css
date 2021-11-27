@@ -7,12 +7,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* .Product .Product-card:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
-} */
-
 .Product .Product-card .Product-card-body {
   width: 100%;
   padding: 0 3rem;
